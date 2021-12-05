@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 exports.homeRoutes = (req, res) => {
-    axios.get(`http://localhost:${process.env.PORT}/api/games`)
+    axios.get(`https://boiling-fjord-53043.herokuapp.com/api/games`)
         .then(function(response){
             res.render('index', { games : response.data });
         })
@@ -19,7 +19,7 @@ exports.about = (req, res) => {
 }
 
 exports.update_game = (req, res) => {
-    axios.get(`http://localhost:${process.env.PORT}/api/games`, { params : { id : req.query.id }})
+    axios.get(`https://boiling-fjord-53043.herokuapp.com/api/games`, { params : { id : req.query.id }})
         .then(function(gamedata){
             res.render("update-game", { game : gamedata.data})
         })
