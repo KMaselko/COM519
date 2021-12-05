@@ -1,0 +1,31 @@
+<!-- form handling -->
+<form action="/api/games" method="POST" id="add_game">
+    <div class="new_game">
+        <div class="form-group">
+            <label for="name" class="text-light">Game title</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="name" value="">
+        </div>
+        <div class="form-group">
+            <label for="genre" class="text-light">Genre</label>
+            <input type="text" name="genre" value="">
+        </div>
+        <div class="form-group">
+            <label for="price" class="text-light">Price</label>
+            <input type="text" name="price" value="" placeholder="£0.00">
+        </div>
+        <div class="form-group">
+            <label for="publisher" class="text-light">Publisher</label>
+            <input type="text" name="publisher" value="">
+        </div>
+        <div class="form-group">
+            <label for="time" class="text-light">Hours to finish</label>
+            <input type="text" name="time" value="">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+
+    </div>
+</form>
