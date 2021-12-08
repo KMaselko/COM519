@@ -25,6 +25,8 @@ Finally, they need to type `npm start` in the VS code terminal.
 
 Alternatively, a user can access this application with this link: https://boiling-fjord-53043.herokuapp.com/.
 
+If the provided link on Heroku does not send any requests (for example it does not delete or modify the entries) please run the project on VS Code by following the guide provided above and try again to send a request.
+
 # Usage
 The application will load the main page as its index which will display all the data in the database. To make it more readable, I have implemented a sorting and filtering system so the user would not see hundreds of data in one page. This is how it presents itself:
 ![image](https://user-images.githubusercontent.com/92021893/144755134-7bc0f3b6-41a6-4a38-a63c-82d0cdd37292.png)<br/>
@@ -68,3 +70,38 @@ This simple application can solve multiple problems such as:
 - Checking the publisher
 - Checking which game is the longest or the shortest (if someone does not have much time to play for example)
 
+# Problems not solved
+Unfortunately, there is one main function that has not been implemented due to lack of knowledge. It is **Login as Administrator** so everyone has the same permissions meaning everyone can edit the database.<br/>
+It took me so long to figure out how to implement it but unfortunately failed to do so, therefore I decided to leave it as it is.
+
+# Structure
+This website application has been built fairly simple. It uses app.js as its index when `npm start` is typed. That application sets up all the necessary libraries, sets up a connection, defines a port, sets a server (EJS), uses different assets such as images, JavaScript and CSS, loads routers from the `router` file that will define different routes and finally runs a server.
+
+Except of having different views as EJS that are just webpages, I have also provided different files that are seperated in different folders. The main folder is called server. This server contains: 
+- Controller.js which will create every request
+- Connection.js which will connect to a server
+- Model.js which will create a schema containing the dataset
+- Router.js which will retrieve GET request when loading any webpage
+- And finally render.js which will render these webapges for the router
+
+I am using API to render the database as JSON from MongoDB so the application will get information from this route. It looks like this:
+`
+//API
+route.post('/api/games', controller.create);
+route.get('/api/games', controller.find);
+route.put('/api/games/:id', controller.update);
+route.delete('/api/games/:id', controller.delete);
+`
+A user can access `/api/games/` route to see the database but it is not very readable.<br/>
+When it comes to PUT and DELETE requests, the application will render a route with its original ID so that is how the application will know which exactly entry will be deleted or modified.
+
+# Security
+The website is secured because it is hosted on Heroku so it is using a secure connection, that means that all the passwords and payment information would be secured if any payments would be implemented in the future.<br/>
+It is also using MongoDB connection that needs a password, this connection is set up in config.env so only people with an access to the application files will be able to access that database.<br/>
+Unfortunately as I mentioned earlier, it does not have login system implemented meaning that everyone could modify the database through the application, in these terms the website is not very secure.
+
+# Conclusion
+In conclusion, I think that the project has been done fairly good. I am only missing couple of features where the login feature is the main one that is also missing.<br/>
+I had lots of fun working on this project, I have learned a lot about Express, Node JS, MongoDB and couple new libraries such as axios and cors. I had an opportunity to polish my JavaScript skills as I have a feeling it was lacking a bit before that module appeared.
+
+I have been using several references to help me find solutions to some problems such as YouTube, Stackoverflow and SOL Learning. 
